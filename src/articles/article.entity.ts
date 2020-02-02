@@ -3,8 +3,13 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  OneToMany,
+  ManyToMany,
+  JoinTable
 } from "typeorm";
+import { Comment } from "src/comments/comment.entity";
+import { Category } from "src/categories/category.entity";
 
 @Entity()
 export class Article {
@@ -22,4 +27,18 @@ export class Article {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(
+    type => Comment,
+    comment => comment.article,
+    { cascade: true }
+  )
+  comments: Comment[];
+
+  @ManyToMany(
+    type => Category,
+    category => category.articles
+  )
+  @JoinTable()
+  categories: Category[];
 }

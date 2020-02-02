@@ -32,17 +32,17 @@ export class ArticlesController {
 
   @Post("/")
   create(@Body() input: CreateArticleInput) {
-    return this.articlesService.create(input);
+    this.articlesService.create(input);
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() body: UpdateArticleInput) {
-    return this.articlesService.update(id, body);
+  update(@Param("id") id: string, @Body() input: UpdateArticleInput) {
+    return this.articlesService.update(id, input);
   }
 
   @Delete(":id")
   @HttpCode(HttpStatus.NO_CONTENT)
-  delete(@Param("id") id: string) {
-    return this.articlesService.delete(id);
+  async delete(@Param("id") id: string) {
+    await this.articlesService.delete(id);
   }
 }

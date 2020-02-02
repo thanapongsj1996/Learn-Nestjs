@@ -15,7 +15,7 @@ export class ArticlesService {
   ) {}
 
   findAll(query: ArticlesQuery) {
-    return this.articleRepository.find(query);
+    return this.articleRepository.find({ ...query, relations: ["comments"] });
   }
 
   findOne(id: string) {
