@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from "@nestjs/common";
-import { CreateCommentInput } from "src/comments/create-comment.input";
+import { CreateCommentInput } from "src/modules/comments/create-comment.input";
 import { CommentsService } from "./comments.service";
 
 @Controller("comments")

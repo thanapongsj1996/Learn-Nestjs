@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Comment } from "./comment.entity";
 import { Repository } from "typeorm";
 
-import { CreateCommentInput } from "src/comments/create-comment.input";
+import { CreateCommentInput } from "src/modules/comments/create-comment.input";
 
 @Injectable()
 export class CommentsService {

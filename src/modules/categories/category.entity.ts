@@ -4,20 +4,20 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToOne
+  ManyToMany
 } from "typeorm";
-import { User } from "src/users/user.entity";
+import { Article } from "src/modules/articles/article.entity";
 
 @Entity()
-export class Address {
+export class Category {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  lat: string;
+  title: string;
 
   @Column()
-  lng: string;
+  decs: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -25,9 +25,9 @@ export class Address {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToOne(
-    type => User,
-    user => user.address
+  @ManyToMany(
+    typr => Article,
+    article => article.categories
   )
-  user: User;
+  articles: Article[];
 }

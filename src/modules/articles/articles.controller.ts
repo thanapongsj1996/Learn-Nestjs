@@ -8,13 +8,15 @@ import {
   Delete,
   HttpCode,
   HttpStatus,
-  Query
+  Query,
+  UsePipes,
+  ValidationPipe
 } from "@nestjs/common";
 
-import { ArticlesService } from "./articles.service";
-import { ArticlesQuery } from "./articles.query";
-import { CreateArticleInput } from "./create-article.input";
-import { UpdateArticleInput } from "./update-article.input";
+import { ArticlesService } from "src/modules/articles/articles.service";
+import { ArticlesQuery } from "src/modules/articles/articles.query";
+import { CreateArticleInput } from "src/modules/articles/create-article.input";
+import { UpdateArticleInput } from "src/modules/articles/update-article.input";
 
 @Controller("articles")
 export class ArticlesController {
@@ -31,6 +33,7 @@ export class ArticlesController {
   }
 
   @Post("/")
+  @UsePipes(ValidationPipe)
   create(@Body() input: CreateArticleInput) {
     this.articlesService.create(input);
   }

@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
 import { User } from "./user.entity";
-import { CreateUserInput } from "src/users/create-user.input";
+import { CreateUserInput } from "src/modules/users/create-user.input";
 
 @Injectable()
 export class UsersService {
@@ -14,6 +14,10 @@ export class UsersService {
 
   findAll() {
     return this.userRepository.find();
+  }
+
+  findOne(id: string) {
+    return this.userRepository.findOne(id);
   }
 
   create(input: CreateUserInput) {

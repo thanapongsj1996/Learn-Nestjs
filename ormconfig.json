@@ -7,5 +7,9 @@
   "password": "boyboy",
   "entities": ["dist/**/*.entity{.ts,.js}"],
   "synchronize": true,
-  "logging": true
+  "logging": true,
+  "migrations": ["dist/migration/*{.ts,.js}"],
+  "cli": {
+    "migrationsDir": "src/migration"
+  }
 }

@@ -8,8 +8,8 @@ import {
   ManyToMany,
   JoinTable
 } from "typeorm";
-import { Comment } from "src/comments/comment.entity";
-import { Category } from "src/categories/category.entity";
+import { Comment } from "src/modules/comments/comment.entity";
+import { Category } from "src/modules/categories/category.entity";
 
 @Entity()
 export class Article {

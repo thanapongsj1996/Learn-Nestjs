@@ -7,7 +7,9 @@ import {
   OneToOne,
   JoinColumn
 } from "typeorm";
-import { Address } from "src/addresses/address.entity";
+import { Address } from "src/modules/addresses/address.entity";
+
+import { Exclude } from "class-transformer";
 
 @Entity()
 export class User {
@@ -18,6 +20,7 @@ export class User {
   email: string;
 
   @Column()
+  @Exclude()
   password: string;
 
   @CreateDateColumn()
